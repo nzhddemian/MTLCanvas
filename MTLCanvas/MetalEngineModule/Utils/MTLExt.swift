@@ -1,6 +1,6 @@
 //
 //  MTLExt.swift
-//  ShareReceive
+//  MTLCanvas
 //
 //  Created by Demian Nezhdanov on 19/07/2025.
 //

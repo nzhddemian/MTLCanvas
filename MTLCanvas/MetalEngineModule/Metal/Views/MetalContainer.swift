@@ -1,6 +1,6 @@
 //
 //  MetalContainer.swift
-//  MetalBase
+//  MTLCanvas
 //
 //  Created by Demian on 20/10/2025.
 //

@@ -1,6 +1,6 @@
 //
 //  LayoutProp.swift
-//  genie
+//  MTLCanvas
 //
 //  Created by Demian on 10/09/2025.
 //

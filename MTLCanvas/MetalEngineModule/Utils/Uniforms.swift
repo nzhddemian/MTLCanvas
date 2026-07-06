@@ -1,6 +1,6 @@
 //
 //  Uniforms.swift
-//  DrawingEngine
+//  MTLCanvas
 //
 //  Created by Demian on 23/04/2026.
 //

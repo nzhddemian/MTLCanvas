@@ -1,6 +1,6 @@
 //
 //  MetalDevice.swift
-//  SparclesDemoApp
+//  MTLCanvas
 //
 //  Created by Demian Nezhdanov on 20/07/2023.
 //

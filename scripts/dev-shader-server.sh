@@ -68,10 +68,14 @@ start_server() {
 }
 
 stop_server() {
+    local shutdown_url="http://127.0.0.1:${PORT}/_mtlcanvas/shutdown"
+
     if ! is_running; then
         local port_pid
         port_pid="$(/usr/sbin/lsof -tiTCP:"$PORT" -sTCP:LISTEN 2>/dev/null | head -n 1 || true)"
         if [[ -n "$port_pid" ]]; then
+            /usr/bin/curl --silent --max-time 1 "$shutdown_url" >/dev/null 2>&1 || true
+            sleep 0.2
             kill "$port_pid" 2>/dev/null || true
             echo "Stopped MTLCanvas shader server on port ${PORT}: pid ${port_pid}"
         fi
@@ -85,6 +89,8 @@ stop_server() {
 
     local pid
     pid="$(cat "$PID_FILE")"
+    /usr/bin/curl --silent --max-time 1 "$shutdown_url" >/dev/null 2>&1 || true
+    sleep 0.2
     kill "$pid" 2>/dev/null || true
     rm -f "$PID_FILE"
     echo "Stopped MTLCanvas shader server: pid ${pid}"

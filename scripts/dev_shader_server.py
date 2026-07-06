@@ -9,9 +9,17 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 class ShaderRequestHandler(SimpleHTTPRequestHandler):
     last_request_time = time.monotonic()
+    server_ref = None
 
     def do_GET(self):
         type(self).last_request_time = time.monotonic()
+        if self.path == "/_mtlcanvas/shutdown":
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"Stopping MTLCanvas shader server\n")
+            threading.Thread(target=type(self).server_ref.shutdown, daemon=True).start()
+            return
+
         super().do_GET()
 
     def do_HEAD(self):
@@ -40,6 +48,7 @@ def main():
     handler_class = functools.partial(ShaderRequestHandler, directory=args.root)
     server = ThreadingHTTPServer((args.host, args.port), handler_class)
     server.daemon_threads = True
+    ShaderRequestHandler.server_ref = server
 
     monitor = threading.Thread(
         target=monitor_idle_timeout,

@@ -1,6 +1,6 @@
 //
 //  MetalView.swift
-//  MetalBase
+//  MTLCanvas
 //
 //  Created by Demian on 17/09/2025.
 //

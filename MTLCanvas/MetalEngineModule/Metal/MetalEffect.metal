@@ -1,6 +1,6 @@
 //
 //  MetalEffect.metal
-//  MetalBase
+//  MTLCanvas
 //
 //  Created by Demian Nezhdanov on 21/06/2025.
 //
